@@ -10,8 +10,12 @@
         </div>
     </div>
 
+    {{-- <a href="{{ route('balitas.exportPDF') }}" class="btn btn-danger mb-3">Export PDF</a> --}}
     <div class="table-responsive">
         <div class="container mt-4">
+            <a href="{{ route('exportPDFBalita') }}" class="btn btn-success mb-4" target="_blank">
+                Export PDF
+            </a>
             <table class="table align-middle table-bordered table-hover">
                 <thead class="text-center align-top">
                     <tr>

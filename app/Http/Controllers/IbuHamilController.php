@@ -3,10 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\IbuHamil;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
 
 class IbuHamilController extends Controller
 {
+    public function exportPDF()
+    {
+
+        //Ambil data balita
+        $ibuHamil = IbuHamil::all();
+
+        $pdf = FacadePdf::loadview('dataIbuHamil.pdfIbuHamil', compact('ibuHamil'));
+
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->download('data-ibuHamil.pdf');
+    }
+
     public function index()
     {
         $ibuHamil = IbuHamil::all();

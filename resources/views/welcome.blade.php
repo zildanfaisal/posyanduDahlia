@@ -52,6 +52,12 @@
           </div>
       </div>
   </div>
+  
+  <div class="container">
+    <a href="{{ route('export.pdf') }}" class="btn btn-success" target="_blank">
+        Export PDF
+    </a>
+  </div>
 
   <div class="table-responsive">
       <div class="container mt-4">

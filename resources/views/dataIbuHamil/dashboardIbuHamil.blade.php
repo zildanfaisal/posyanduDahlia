@@ -13,6 +13,9 @@
 
     <div class="table-responsive">
       <div class="container mt-4">
+        <a href="{{ route('exportPDFIbuHamil') }}" class="btn btn-success mb-4" target="_blank">
+          Export PDF
+      </a>
         <table class="table align-middle table-bordered table-hover">
           <thead class="text-center align-top">
             <tr>

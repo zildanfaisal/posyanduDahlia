@@ -28,6 +28,8 @@ Route::middleware(['auth'])->group(function () {
     // HomePage
     Route::get('/homePage', [HomePageController::class, 'index']);
 
+    Route::get('/export.pdf', [HomePageController::class, 'exportPDF'])->name('export.pdf');
+
     // Data Balita Routes
     Route::resource('balitas', BalitaController::class);
 
@@ -41,6 +43,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/balita/{id}/edit', [BalitaController::class, 'edit'])->name('balita.edit');
     Route::put('/balita/{id}', [BalitaController::class, 'update'])->name('balita.update');
 
+    Route::get('exportPDFBalita', [BalitaController::class, 'exportPDF'])->name('exportPDFBalita');
+
     // Data Ibu Hamil Routes
     Route::resource('ibuHamil', IbuHamilController::class);
 
@@ -53,6 +57,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/ibuHamil/{id}/edit', [IbuHamilController::class, 'edit'])->name('ibuHamil.edit');
     Route::put('/ibuHamil/{id}', [IbuHamilController::class, 'update'])->name('ibuHamil.update');
+
+    Route::get('exportPDFIbuHamil', [IbuHamilController::class, 'exportPDF'])->name('exportPDFIbuHamil');
 });
 
 // Route::get('/', function () {
