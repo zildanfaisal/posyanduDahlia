@@ -55,6 +55,58 @@
             @endforelse
           </tbody>  
         </table>
+        
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          {{-- Teks "Showing ..." di sebelah kiri --}}
+          <div>
+            <p class="mb-0">
+              Showing {{ $ibuHamil->firstItem() }} to {{ $ibuHamil->lastItem() }} of {{ $ibuHamil->total() }} results
+            </p>
+          </div>
+        
+          {{-- Pagination di sebelah kanan --}}
+          <nav aria-label="Page navigation example">
+            <ul class="pagination mb-0">
+              {{-- Tombol Previous --}}
+              @if ($ibuHamil->onFirstPage())
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+              @else
+                <li class="page-item">
+                  <a class="page-link" href="{{ $ibuHamil->previousPageUrl() }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+              @endif
+        
+              {{-- Nomor Halaman --}}
+              @foreach ($ibuHamil->links()->elements[0] as $page => $url)
+                <li class="page-item {{ $page == $ibuHamil->currentPage() ? 'active' : '' }}">
+                  <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                </li>
+              @endforeach
+        
+              {{-- Tombol Next --}}
+              @if ($ibuHamil->hasMorePages())
+                <li class="page-item">
+                  <a class="page-link" href="{{ $ibuHamil->nextPageUrl() }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              @else
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              @endif
+            </ul>
+          </nav>
+        </div>
+
         </div>
     </div>
 @endsection

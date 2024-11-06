@@ -23,7 +23,7 @@ class IbuHamilController extends Controller
 
     public function index()
     {
-        $ibuHamil = IbuHamil::all();
+        $ibuHamil = IbuHamil::paginate(5);
         return view('dataIbuHamil.dashboardIbuHamil', compact('ibuHamil'));
     }
 

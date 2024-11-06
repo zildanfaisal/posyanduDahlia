@@ -29,9 +29,15 @@ class BalitaController extends Controller
         return view('welcome', compact('balitas'));
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $balitas = Balita::all();
+        $query = Balita::query();
+
+        if ($request->has('search') && $request->search != '') {
+            $query->where('namaAnak', 'like', '%' . $request->search . '%');
+        }
+
+        $balitas = $query->paginate(5)->appends($request->only('search'));
         return view('dataBalita.dashboardBalita', compact('balitas'));
     }
 
@@ -47,7 +53,7 @@ class BalitaController extends Controller
         $balita->nik = $request->nik;
         $balita->nkk = $request->nkk;
         $balita->tanggalLahir = $request->tanggalLahir;
-        $balita->beratBadan = $request->beratBadan;
+        $balita->beratBadanLahir = $request->beratBadanLahir;
         $balita->panjangBadan = $request->panjangBadan;
         $balita->lingkarKepala = $request->lingkarKepala;
         $balita->namaAyah = $request->namaAyah;
@@ -58,6 +64,13 @@ class BalitaController extends Controller
         $balita->save();
 
         return redirect('/dashboardBalita')->with('success', 'Data balita berhasil ditambahkan.');
+    }
+
+    public function show($id)
+    {
+        $balita = Balita::findOrFail($id);
+
+        return view('dataBalita.detailDataBalita', compact('balita'));
     }
 
     public function destroy($id)
@@ -81,7 +94,7 @@ class BalitaController extends Controller
             'nik' => 'required|string|max:255',
             'nkk' => 'required|string|max:255',
             'tanggalLahir' => 'required|date',
-            'beratBadan' => 'required|int',
+            'beratBadanLahir' => 'required|int',
             'panjangBadan' => 'required|int',
             'lingkarKepala' => 'required|int',
             'namaAyah' => 'required|string',

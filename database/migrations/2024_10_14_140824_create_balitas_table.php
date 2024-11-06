@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nik');
             $table->string('nkk');
             $table->date('tanggalLahir');
-            $table->float('beratBadan');
+            $table->float('beratBadanLahir');
             $table->float('panjangBadan');
             $table->float('lingkarKepala');
             $table->string('namaAyah');

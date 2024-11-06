@@ -12,8 +12,8 @@ class HomePageController extends Controller
     public function index()
     {
         // Ambil data Balita dan Ibu Hamil
-        $balitas = Balita::all(); // Mengambil semua data balita
-        $ibuHamil = IbuHamil::all(); // Mengambil semua data ibu hamil
+        $balitas = Balita::paginate(5); // Mengambil semua data balita
+        $ibuHamil = IbuHamil::paginate(5); // Mengambil semua data ibu hamil
 
         return view('welcome', compact('balitas', 'ibuHamil'));
     }

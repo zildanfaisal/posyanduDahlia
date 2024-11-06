@@ -34,7 +34,7 @@
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Berat Badan Waktu Lahir</label>
-                <input type="number" class="form-control" id="beratBadan" name="beratBadan" value="{{ $balita->beratBadan }}" placeholder="Masukkan Posyandu...">
+                <input type="number" class="form-control" id="beratBadan" name="beratBadanLahir" value="{{ $balita->beratBadanLahir }}" placeholder="Masukkan Posyandu...">
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Panjang Badan Waktu Lahir</label>

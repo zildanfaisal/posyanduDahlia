@@ -51,7 +51,7 @@
                             <td>{{ $balita->nik }}</td>
                             <td>{{ $balita->nkk }}</td>
                             <td>{{ $balita->tanggalLahir }}</td>
-                            <td>{{ $balita->beratBadan }} Kg</td>
+                            <td>{{ $balita->beratBadanLahir }} g</td>
                             <td>{{ $balita->panjangBadan }} Cm</td>
                             <td>{{ $balita->lingkarKepala }} Cm</td>
                             <td>{{ $balita->namaAyah }}</td>

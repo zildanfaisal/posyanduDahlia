@@ -21,4 +21,9 @@ class Balita extends Model
         'posyandu',
         'tanggalPendaftaran'
     ];
+
+    public function beratBadanBulanan()
+    {
+        return $this->hasMany(BeratBadanBulanan::class);
+    }
 }

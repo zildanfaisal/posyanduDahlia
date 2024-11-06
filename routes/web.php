@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BalitaController;
+use App\Http\Controllers\BeradBadanBulananController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\IbuHamilController;
 use App\Models\IbuHamil;
@@ -37,6 +38,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/addDataBalita', [BalitaController::class, 'create']);
 
     Route::post('/storeDataBalita', [BalitaController::class, 'store']);
+
+    Route::get('/balita/{id}', [BalitaController::class, 'show'])->name('balita.show');
+
+    Route::post('/berat_badan_bulanan', [BeradBadanBulananController::class, 'store'])->name('beratBadanBulanan.store');
+    Route::delete('/berat_badan_bulanan/{id}', [BeradBadanBulananController::class, 'destroy'])->name('beratBadanBulanan.destroy');
 
     Route::delete('/balita/{id}', [BalitaController::class, 'destroy'])->name('balita.destroy');
 
