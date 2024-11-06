@@ -26,4 +26,14 @@ class Balita extends Model
     {
         return $this->hasMany(BeratBadanBulanan::class);
     }
+
+    public function panjangBadanBulanan()
+    {
+        return $this->hasMany(PanjangBadanBulanan::class);
+    }
+
+    public function lingkarKepalaBulanan()
+    {
+        return $this->hasMany(LingkarKepalaBulanan::class);
+    }
 }

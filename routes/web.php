@@ -5,6 +5,8 @@ use App\Http\Controllers\BalitaController;
 use App\Http\Controllers\BeradBadanBulananController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\IbuHamilController;
+use App\Http\Controllers\LingkarKepalaBulananController;
+use App\Http\Controllers\PanjangBadanBulananController;
 use App\Models\IbuHamil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +45,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/berat_badan_bulanan', [BeradBadanBulananController::class, 'store'])->name('beratBadanBulanan.store');
     Route::delete('/berat_badan_bulanan/{id}', [BeradBadanBulananController::class, 'destroy'])->name('beratBadanBulanan.destroy');
+
+    Route::post('/panjang_badan_bulanan', [PanjangBadanBulananController::class, 'store'])->name('panjangBadanBulanan.store');
+    Route::delete('/panjang_badan_bulanan/{id}', [PanjangBadanBulananController::class, 'destroy'])->name('panjangBadanBulanan.destroy');
+
+    Route::post('/lingkar_kepala_bulanan', [LingkarKepalaBulananController::class, 'store'])->name('lingkarKepalaBulanan.store');
+    Route::delete('/lingkar_kepala_bulanan/{id}', [LingkarKepalaBulananController::class, 'destroy'])->name('lingkarKepalaBulanan.destroy');
 
     Route::delete('/balita/{id}', [BalitaController::class, 'destroy'])->name('balita.destroy');
 
