@@ -10,17 +10,37 @@ use PDF;
 
 class BalitaController extends Controller
 {
-    public function exportPDF()
+    public function exportPDF(Request $request)
     {
+        $query = Balita::query();
 
-        //Ambil data balita
-        $balitas = Balita::all();
+        $selectedBulan = $request->bulan;
 
-        $pdf = FacadePdf::loadview('dataBalita.pdfBalita', compact('balitas'));
+        $query->with([
+            'beratBadanBulanan' => function ($subQuery) use ($selectedBulan) {
+                if ($selectedBulan) {
+                    $subQuery->whereMonth('tanggal', $selectedBulan);
+                }
+            },
+            'panjangBadanBulanan' => function ($subQuery) use ($selectedBulan) {
+                if ($selectedBulan) {
+                    $subQuery->whereMonth('tanggal', $selectedBulan);
+                }
+            },
+            'lingkarKepalaBulanan' => function ($subQuery) use ($selectedBulan) {
+                if ($selectedBulan) {
+                    $subQuery->whereMonth('tanggal', $selectedBulan);
+                }
+            }
+        ]);
+
+        $balitas = $query->get();
+
+        $pdf = FacadePdf::loadview('dataBalita.pdfBalita', compact('balitas', 'selectedBulan'));
 
         $pdf->setPaper('A4', 'landscape');
 
-        return $pdf->download('data-balita.pdf');
+        return $pdf->stream('data-balita.pdf');
     }
 
     public function showHomePage()
@@ -33,12 +53,34 @@ class BalitaController extends Controller
     {
         $query = Balita::query();
 
+        // Filter pencarian berdasarkan nama anak
         if ($request->has('search') && $request->search != '') {
             $query->where('namaAnak', 'like', '%' . $request->search . '%');
         }
 
-        $balitas = $query->paginate(5)->appends($request->only('search'));
-        return view('dataBalita.dashboardBalita', compact('balitas'));
+        // Filter berdasarkan bulan yang dipilih
+        $selectedBulan = $request->bulan;
+
+        // Tambahkan relasi beratBadanBulanan dengan filter bulan jika bulan dipilih
+        $query->with([
+            'beratBadanBulanan' => function ($subQuery) use ($selectedBulan) {
+            if ($selectedBulan) {
+                $subQuery->whereMonth('tanggal', $selectedBulan);
+            }
+        }, 'panjangBadanBulanan' => function ($subQuery) use ($selectedBulan) {
+            if ($selectedBulan) {
+                $subQuery->whereMonth('tanggal', $selectedBulan);
+            }
+        }, 'lingkarKepalaBulanan' => function ($subQuery) use ($selectedBulan) {
+            if ($selectedBulan) {
+                $subQuery->whereMonth('tanggal', $selectedBulan);
+            }
+        }]);
+
+        // Ambil data balita dan paginate
+        $balitas = $query->paginate(5)->appends($request->only('search', 'bulan'));
+
+        return view('dataBalita.dashboardBalita', compact('balitas', 'selectedBulan'));
     }
 
     public function create()
