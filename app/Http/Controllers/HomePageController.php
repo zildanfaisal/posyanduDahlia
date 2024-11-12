@@ -29,6 +29,6 @@ class HomePageController extends Controller
 
         $pdf->setPaper('A4', 'landscape');
 
-        return $pdf->download('data-posyandu.pdf');
+        return $pdf->stream('data-posyandu.pdf');
     }
 }

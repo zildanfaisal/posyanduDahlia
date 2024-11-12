@@ -216,22 +216,26 @@
             {{-- End Lingkar Kepala --}}
         </div>
         
-        <div class="row mt-4">
+        <h2 class="mt-4 mb-4">
+            Grafik Bulanan
+        </h2>
+
+        <div class="row">
             <!-- Grafik Berat Badan -->
-            <div class="col">
-                <h3>Grafik Berat Badan Bulanan</h3>
+            <div class="col" style="border-radius: 10px; background-color: rgb(241, 241, 241); padding-top: 20px; padding-bottom: 20px;">
+                <h3>Berat Badan</h3>
                 <canvas id="beratBadanChart"></canvas>
             </div>
         
-            <!-- Grafik Panjang Badan -->
-            <div class="col">
-                <h3>Grafik Panjang Badan Bulanan</h3>
+            <!-- Panjang Badan -->
+            <div class="col" style="border-radius: 10px; background-color: rgb(241, 241, 241); margin-left: 20px; margin-right: 20px; padding-top: 20px; padding-bottom: 20px;">
+                <h3>Panjang Badan</h3>
                 <canvas id="panjangBadanChart"></canvas>
             </div>
         
-            <!-- Grafik Lingkar Kepala -->
-            <div class="col">
-                <h3>Grafik Lingkar Kepala Bulanan</h3>
+            <!-- Lingkar Kepala -->
+            <div class="col" style="border-radius: 10px; background-color: rgb(241, 241, 241); padding-top: 20px; padding-bottom: 20px;">
+                <h3>Lingkar Kepala</h3>
                 <canvas id="lingkarKepalaChart"></canvas>
             </div>
         </div>
