@@ -195,7 +195,7 @@
                                     <td>{{ \Carbon\Carbon::parse($lingkarKepala->tanggal)->format('F Y') }}</td>
                                     <td>{{ $lingkarKepala->lingkarKepalaBulanan }} cm</td>
                                     <td>
-                                        <form action="{{ route('lingkarKepalaBulanan.destroy', $beratBadan->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                        <form action="{{ route('lingkarKepalaBulanan.destroy', $lingkarKepala->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">

@@ -11,9 +11,11 @@ class Balita extends Model
 
     protected $fillable = [
         'namaAnak',
+        'nik',
+        'nkk',
         'tanggalLahir',
         'beratBadanLahir',
-        'panjangBadanLahir',
+        'panjangBadan',
         'lingkarKepala',
         'namaAyah',
         'namaIbu',

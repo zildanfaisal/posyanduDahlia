@@ -33,7 +33,11 @@
 <body>
     {{-- Table Balita --}}
     <div class="balita">
-        <h2>{{ DateTime::createFromFormat('!m', $selectedBulan)->format('F') }}</h2>
+        @if($selectedBulan)
+            <h2>{{ DateTime::createFromFormat('!m', $selectedBulan)->format('F') }}</h2>
+        @else
+            <h2>Data Balita</h2>
+        @endif
         <table>
             <thead>
                 <tr>
